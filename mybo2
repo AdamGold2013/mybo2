@@ -1,0 +1,37 @@
+import os
+import telebot
+import random  
+# Замени 'TOKEN' на токен твоего бота
+# Этот токен ты получаешь от BotFather, чтобы бот мог работать
+token = ("8007245664:AAGztlFoakIdktTaHseeQ4c21iVy-rypnxA")
+bot = telebot.TeleBot(token)
+
+requests = {}
+
+@bot.message_handler(commands=['start'])
+def send_welcome(message):
+    bot.reply_to(message, "Hi i am a telegram bot!, i can tell you how to help our nature. to countiniue print in 1 of the following commands: /facts_how_to_help_nature, /sculp_nature_img, /help_earth, /causes_of_grbg.")
+
+@bot.message_handler(commands=['facts_how_to_help_nature'])
+def send_hello(message):
+    bot.reply_to(message, "if you follow the following facts you help nature: 1. recycle. 2. don't harm animals. 3.use less gas and electricity. 4.help animals")
+
+@bot.message_handler(commands=['sculp_nature_img'])
+def send_sculp_img(message):
+    img2 = random.choice(os.listdir('telegram_bot/images/images2'))
+    with open(f'telegram_bot/images/images2/{img2}', 'rb') as f:  
+        bot.send_photo(message.chat.id, f)
+        bot.reply_to(message, "if you want to make a sculpture you can use anything even cigaretes, cans and more. there are many tutorials in youtube. you can even make something that helps animals, like a bird house from a plastic bottle")
+
+@bot.message_handler(commands=['help_earth'])
+def send_help_earth(message):
+    img = random.choice(os.listdir('telegram_bot/images/images3'))
+    with open(f'telegram_bot/images/images3/{img}', 'rb') as f:  
+        bot.send_photo(message.chat.id, f)
+        bot.reply_to(message, "Great!, now you know how to recycle!")  
+
+@bot.message_handler(commands=['causes_of_grbg'])
+def causes_of_grbg(message):
+    bot.reply_to(message, "garbage causes harm to nature in many ways. garbage is very bad for nature animals can die from eating it and it slowly destroys earth. in fact plastic takes 50 to 500 years before desapiring in nature. as a matter of fact many lakes have disappeard from the 1990's and earlier")
+
+bot.polling()
