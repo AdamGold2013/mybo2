@@ -3,7 +3,6 @@ import telebot
 import random  
 # Замени 'TOKEN' на токен твоего бота
 # Этот токен ты получаешь от BotFather, чтобы бот мог работать
-token = ("8007245664:AAGztlFoakIdktTaHseeQ4c21iVy-rypnxA")
 bot = telebot.TeleBot(token)
 
 requests = {}
